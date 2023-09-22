@@ -1,15 +1,34 @@
 def main():
     print()
+    userinput = input("guess the password")
+    if WordsCheckerWithInput(userinput) == True:
+        print("Moving to next function")
+    else:
+        print("hardstuck buddy")
+
+
     if CoolWordsChecker() == True:
         print("moving to next Functionality")
     else:
-        print("Your are stuck here")
+        print("You are stuck here")
+
+
+def WordsCheckerWithInput(data):
+    """
+    This method check whether data matches the password
+    :param data: This is what is being passed from the outside
+    :return: true if data matches, False otherwise
+    """
+    if (data == "Fluffkinz"):
+        return True
+    else:
+        return False
 
 
 def WordsChecker():
 
     """
-    This method checks wether a user input matches a pre-defined password or not
+    This method checks whether a user input matches a pre-defined password or not
     :return:
     """
     secretWord = "Fluffkinz"
