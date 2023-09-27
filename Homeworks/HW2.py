@@ -21,7 +21,8 @@ def HasNumber(userinput):
         else:
             return False
 
-
+#@MJ: This method does not work correctly.
+#see answer key
 def HasSymbol(userinput):
     specChars = ["!", "@", "#", "$", "%", "*"]
     for x in userinput:
