@@ -6,7 +6,7 @@ def main():
 
     print(letters)
 
-    plaintext = "wvu".lower()
+    plaintext = "dylan".lower()
     encrypted = ""
     key = 4
     counter = 0
