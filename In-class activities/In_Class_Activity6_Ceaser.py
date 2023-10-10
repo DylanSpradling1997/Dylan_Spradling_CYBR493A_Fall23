@@ -1,4 +1,11 @@
 import string
+"""
+Dylan Spradling
+9/28/2023
+In class activity 6
+This program print out the name of the creator in both plaintext and in cypher text 
+"""
+
 
 
 def main():
