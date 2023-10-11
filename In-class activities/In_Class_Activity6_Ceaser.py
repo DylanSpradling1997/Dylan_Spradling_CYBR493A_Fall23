@@ -11,7 +11,7 @@ This program print out the name of the creator in both plaintext and in cypher t
 def main():
     letters = list(string.ascii_lowercase)
 
-    print(letters)
+
 
     plaintext = "dylan".lower()
     encrypted = ""
@@ -24,7 +24,7 @@ def main():
         newLocation = (currentLocation + key)%25
 
         newChar = letters[newLocation]
-        print(currentLocation, newLocation, newChar)
+        print(char, currentLocation, newLocation, newChar)
 
 if __name__ == "__main__":
     main()
