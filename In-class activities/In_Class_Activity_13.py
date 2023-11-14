@@ -1,3 +1,19 @@
+from bs4 import BeautifulSoup
+from urllib.parse import urljoin
+import requests
+
+"""
+Dylan Spradling 
+11/13/2023
+
+You have to install the beautiful soup package to make this code work
+Have no idea how to make it work without it
+If you are reading this I would like to meet to discuss things about this course
+
+Also, I dont know how to display bug info in Pycharm as you had us originally to the assignment in jupyter notebook
+I am aware they run off the same interpreter but apparently I did not do the assignment 
+"""
+
 import Web_Scraping as wb
 import DBConnector as dbc
 
@@ -26,8 +42,36 @@ def generate_links(start_link):
 
     # everytime you get a link to a new page, use list_of_links.append(new_page)
     list_of_links.append(start_link)
+    list_of_links = set(list_of_links)
+    list_of_links = list(list_of_links)
+
+    list_of_links = [start_link]
+    current_page = start_link
+
+    while True:
+        # Send a GET request to the current page
+        response = requests.get(current_page)
+        soup = BeautifulSoup(response.text, 'html.parser')
+
+        # Find all links in the current page
+        links = soup.find_all('a', href=True)
+
+        # Extract and print the link to each page
+        for link in links:
+            absolute_url = urljoin(start_link, link['href'])
+            if absolute_url not in list_of_links:
+                list_of_links.append(absolute_url)
+                print(absolute_url)
+
+        # Find the link to the next page
+        next_page_link = soup.find('link', {'rel': 'next'})
+        if next_page_link:
+            current_page = urljoin(start_link, next_page_link['href'])
+        else:
+            break
 
     return list_of_links
+
 
 
 def display_bugs_info(bugs_page):
@@ -37,6 +81,7 @@ def display_bugs_info(bugs_page):
         :param bugs_page: The  link to the page
     """
 
+    # I Don't know how to do this
 
 if __name__ == "__main__":
     main()
