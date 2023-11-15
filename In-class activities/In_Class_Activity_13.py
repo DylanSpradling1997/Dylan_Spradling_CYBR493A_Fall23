@@ -10,7 +10,7 @@ You have to install the beautiful soup package to make this code work
 Have no idea how to make it work without it
 If you are reading this I would like to meet to discuss things about this course
 
-Also, I dont know how to display bug info in Pycharm as you had us originally to the assignment in jupyter notebook
+Also, I dont know how to display bug info in Pycharm as you had us originally submit the assignment in jupyter notebook
 I am aware they run off the same interpreter but apparently I did not do the assignment 
 """
 
@@ -41,9 +41,6 @@ def generate_links(start_link):
     list_of_links = []
 
     # everytime you get a link to a new page, use list_of_links.append(new_page)
-    list_of_links.append(start_link)
-    list_of_links = set(list_of_links)
-    list_of_links = list(list_of_links)
 
     list_of_links = [start_link]
     current_page = start_link
@@ -63,12 +60,16 @@ def generate_links(start_link):
                 list_of_links.append(absolute_url)
                 print(absolute_url)
 
+
         # Find the link to the next page
         next_page_link = soup.find('link', {'rel': 'next'})
         if next_page_link:
             current_page = urljoin(start_link, next_page_link['href'])
         else:
             break
+
+    list_of_links = set(list_of_links)
+    list_of_links = list(list_of_links)
 
     return list_of_links
 
@@ -81,7 +82,9 @@ def display_bugs_info(bugs_page):
         :param bugs_page: The  link to the page
     """
 
-    # I Don't know how to do this
+
+
+
 
 if __name__ == "__main__":
     main()
